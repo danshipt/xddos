@@ -1,3 +1,4 @@
+import os
 import unittest
 
 from lib.nginx_log_parser import NginxLogParser
@@ -6,6 +7,8 @@ from lib.analyzers import GenericDDoSAnalyzer
 
 
 class TestDDoSAnalizer(unittest.TestCase):
+    TESTLOG_PATH = os.path.join(os.path.dirname(__file__), 'access.log-mini')
+
     def test_dict_test(self):
         dict = {
             'dom1': {
@@ -28,7 +31,7 @@ class TestDDoSAnalizer(unittest.TestCase):
         print dict.values()
 
     def test_analyze_minilog(self):
-        minilog = 'tests/access.log-mini'
+        minilog = self.TESTLOG_PATH
 
         log_parser = NginxLogParser(FileDataProvider(minilog))
 
@@ -43,7 +46,7 @@ class TestDDoSAnalizer(unittest.TestCase):
         self.assertEqual('201.254.106.234', block_ips[4])
 
     def test_parse_minilog(self):
-        minilog = 'tests/access.log-mini'
+        minilog = self.TESTLOG_PATH
 
         log_parser = NginxLogParser(FileDataProvider(minilog))
 

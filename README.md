@@ -76,3 +76,17 @@ exit 0
 echo "*/1 * * * * root /usr/local/xddos/xddos_run.sh" > /etc/cron.d/xddos
 /etc/init.d/crond restart
 </pre>
+
+
+Running tests
+=============
+
+Use nosetest to run tests. Install nosetests by running:
+<code>
+$ pip install nose
+</code>
+
+To run the project tests:
+<code>
+$ nosetests -w ./tests/
+</code>
