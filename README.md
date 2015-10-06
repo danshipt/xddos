@@ -45,13 +45,12 @@ Real world installation.
 NOTE: Remove --dry-run flag while in production.
 
 <pre>
-$ pip install xddos
-
-# to upgrade
-$ pip install xddos --upgrade
 
 pip install --upgrade pip
 pip install xddos
+
+# or to upgrade
+# $ pip install xddos --upgrade
 
 mkdir -p /usr/local/xddos/tmp
 
