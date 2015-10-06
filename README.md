@@ -40,7 +40,9 @@ For example, if there is a more then 35 (default) requests from some IP to, say,
 Installation
 ============
 
-Using pip to install:
+Real world installation.
+
+NOTE: Remove --dry-run flag while in production.
 
 <pre>
 $ pip install xddos
