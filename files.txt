@@ -1,0 +1,2 @@
+/usr/lib/python2.7/site-packages/ddos-0.0.1-py2.7.egg
+/usr/bin/http_protector.py
