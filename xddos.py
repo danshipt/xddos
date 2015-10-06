@@ -71,7 +71,7 @@ def main():
         blocker = known_blockers[args.blocker]()
 
         # select analyzer
-        analyzer = GenericDDoSAnalyzer(log_parser, threshold=10)
+        analyzer = GenericDDoSAnalyzer(log_parser, threshold=35)
 
         for attacker_ip in analyzer.attacker_ip_list():
             if not dry_run:

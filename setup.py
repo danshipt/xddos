@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='xddos',
-    version='1.0b4',
+    version='1.0b5',
     author='Dmitry Shilyaev',
     author_email='dima@justhost.ru',
     license='MIT',

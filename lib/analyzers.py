@@ -19,8 +19,6 @@ class GenericDDoSAnalyzer:
 
             parsed_data_map[log_record.request_uri][log_record.ip] += 1
 
-        print parsed_data_map
-
         # find top request IPs
         filtered_ips = {}
         for ip_count_map in parsed_data_map.values():
