@@ -9,7 +9,7 @@ setup(
     url='https://github.com/servancho/xddos',
 
     packages=find_packages(exclude=['tests.*', 'ddos.egg-info']),
-    scripts=['http_protector.py'],
+    scripts=['xddos.py'],
 
     zip_safe=True
 )
