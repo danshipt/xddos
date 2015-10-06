@@ -41,6 +41,37 @@ Installation
 ============
 
 Using pip to install:
+
+<pre>
 $ pip install xddos
+
+# to upgrade
 $ pip install xddos --upgrade
 
+pip install --upgrade pip
+pip install xddos
+
+mkdir -p /usr/local/xddos/tmp
+
+# using tlog from BFD utility
+cp /usr/local/bfd/tlog /usr/local/xddos/
+
+# update BASERUN in /usr/local/xddos/tlog
+# BASERUN="/usr/local/xddos/tmp"
+
+echo "" > /usr/local/xddos/xddos_run.sh
+chmod +x /usr/local/xddos/xddos_run.sh
+
+Put this in /usr/local/xddos/xddos_run.sh
+-----------
+#!/bin/bash
+
+/usr/local/xddos/tlog /var/log/nginx/access.log nginxlog | /usr/bin/xddos.py -p /var/run/xddos.pid -f nginx -b apf --dry-run --stdin >/usr/local/xddos/stats.log 2>&1
+
+exit 0
+------------
+
+
+echo "*/1 * * * * root /usr/local/xddos/xddos_run.sh" > /etc/cron.d/xddos
+/etc/init.d/crond restart
+</pre>
