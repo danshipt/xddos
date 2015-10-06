@@ -1,5 +1,5 @@
-HTTP flood analyzer 
-===================
+DDoS protection system 
+======================
 
 ```
 Optional arguments:
