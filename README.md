@@ -1,33 +1,47 @@
-DDoS protection system 
-======================
+XDDoS - DDoS protection system
+==============================
 
 ```
-Optional arguments:
+usage: xddos [-h] -p pid-file -f {nginx} -b {iptables,apf}
+                [--threshold THRESHOLD] [--dry-run] [--stdin | -l LOG_FILE]
+
+DDoS protection system
+
+optional arguments:
   -h, --help            show this help message and exit
   -p pid-file           PID lock file (default: None)
   -f {nginx}, --format {nginx}
                         Log file format. (default: nginx)
   -b {iptables,apf}, --blocker {iptables,apf}
                         Use specific blocker. (default: iptables)
-  --dry-run             Do not block, just notify
+  --threshold THRESHOLD
+                        Analyzer threshold. (default: 35)
+  --dry-run             Do not block, just notify (default: False)
 
 Parser parameters.:
   --stdin               Data from stdin (default: False)
   -l LOG_FILE, --log LOG_FILE
                         Log file to process. (default: None)
+
 ```
 
 ## Basic usage
 
 ```
 # analyze nginx logs and block via apf firewall 
-tail -n 1000 /var/log/nginx/access.log | ./http_protector.py -p /var/run/httpprot.pid -f nginx -b apf --stdin
+tail -n 1000 /var/log/nginx/access.log | xddos --dry-run -p /var/run/httpprot.pid -f nginx -b apf --stdin
+
+# analyze nginx logs and block via iptables firewall 
+tail -n 1000 /var/log/nginx/access.log | xddos --dry-run -p /var/run/httpprot.pid -f nginx -b iptables --stdin
 ```
+
+NOTE: Remove --dry-run flag while in production.
+
 
 ## DDoS analyzers
 
-By default HTTP protector uses Generic flood analyzer. It counts requests from the specific IP to some URL targets and
-block, based on threshold parameter.
+By default HTTP protector uses Generic flood analyzer. It counts requests from the specific IP to some URL on the
+server and block this IP based on threshold parameter.
 
 The following urls are treated as the different targets:
 * (1) http://attacktarget.com/main
@@ -40,43 +54,34 @@ For example, if there is a more then 35 (default) requests from some IP to, say,
 Installation
 ============
 
-Real world installation.
+Install pip:
+```
+cd
+wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+```
 
-NOTE: Remove --dry-run flag while in production.
-
-<pre>
-
-pip install --upgrade pip
+Installing app using pip
+```
+pip install pip --upgrade --no-cache-dir
 pip install xddos
 
-# or to upgrade
-# $ pip install xddos --upgrade
+# or upgrade
+# pip install xddos --upgrade --no-cache-dir
 
-mkdir -p /usr/local/xddos/tmp
+# test installed script
+xddos -h
+```
 
-# using tlog from BFD utility
-cp /usr/local/bfd/tlog /usr/local/xddos/
+XDDoS can protect your server automatically. To do this, perform the following steps: 
+```
+cd /usr/share/xddos
+./enable.sh
 
-# update BASERUN in /usr/local/xddos/tlog
-# BASERUN="/usr/local/xddos/tmp"
-
-echo "" > /usr/local/xddos/xddos_run.sh
-chmod +x /usr/local/xddos/xddos_run.sh
-
-Put this in /usr/local/xddos/xddos_run.sh
------------
-#!/bin/bash
-
-/usr/local/xddos/tlog /var/log/nginx/access.log nginxlog | /usr/bin/xddos.py -p /var/run/xddos.pid -f nginx -b apf --dry-run --stdin >/usr/local/xddos/stats.log 2>&1
-
-exit 0
-------------
-
-
-echo "*/1 * * * * root /usr/local/xddos/xddos_run.sh" > /etc/cron.d/xddos
-/etc/init.d/crond restart
-</pre>
-
+# to disable xddos
+cd /usr/share/xddos
+./disable.sh
+```
 
 Running tests
 =============

@@ -9,10 +9,10 @@ class GenericBlocker:
         raise Exception('Not implemented.')
 
     def block(self, ip):
-        Popen(self.get_block_command(), stdout=PIPE).wait()
+        Popen(self.get_block_command(ip), stdout=PIPE).wait()
 
     def unblock(self, ip):
-        Popen(self.get_unblock_command(), stdout=PIPE).wait()
+        Popen(self.get_unblock_command(ip), stdout=PIPE).wait()
 
 
 class IPTablesBlocker(GenericBlocker):
@@ -30,7 +30,7 @@ class IPTablesBlocker(GenericBlocker):
         block_cmd.append('-m')
         block_cmd.append('comment')
         block_cmd.append('--comment')
-        block_cmd.append("'http_protector'")
+        block_cmd.append("'xddos'")
 
         return block_cmd
 
@@ -44,7 +44,7 @@ class IPTablesBlocker(GenericBlocker):
         unblock_cmd.append('-m')
         unblock_cmd.append('comment')
         unblock_cmd.append('--comment')
-        unblock_cmd.append("'http_protector'")
+        unblock_cmd.append("'xddos'")
 
         return unblock_cmd
 
@@ -59,7 +59,7 @@ class ApfBlocker(GenericBlocker):
 
         block_cmd = list(self.block_command)
         block_cmd.append(ip)
-        block_cmd.append('http_protector')
+        block_cmd.append('xddos')
 
         return block_cmd
 
@@ -68,6 +68,6 @@ class ApfBlocker(GenericBlocker):
 
         unblock_cmd = list(self.unblock_command)
         unblock_cmd.append(ip)
-        unblock_cmd.append('http_protector')
+        unblock_cmd.append('xddos')
 
         return unblock_cmd

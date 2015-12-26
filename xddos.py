@@ -36,7 +36,7 @@ def main():
         'iptables': IPTablesBlocker
     }
 
-    parser = argparse.ArgumentParser(description='HTTP flood analyzer',
+    parser = argparse.ArgumentParser(description='DDoS protection system',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument("-p", dest="pidfile", required=True, metavar="pid-file", help="PID lock file")
@@ -44,6 +44,7 @@ def main():
                         required=True, default='nginx', help="Log file format.")
     parser.add_argument("-b", "--blocker", choices=known_blockers.keys(),
                         required=True, default='iptables', help="Use specific blocker.")
+    parser.add_argument("--threshold", type=int, default=35, help="Analyzer threshold.")
     parser.add_argument("--dry-run", action="store_true", help="Do not block, just notify")
 
     group1 = parser.add_argument_group('Parser parameters.')
@@ -70,8 +71,8 @@ def main():
         # select blocker
         blocker = known_blockers[args.blocker]()
 
-        # select analyzer
-        analyzer = GenericDDoSAnalyzer(log_parser, threshold=35)
+        # select analyzer, supported only GenericDDoSAnalyzer
+        analyzer = GenericDDoSAnalyzer(log_parser, threshold=args.threshold)
 
         for attacker_ip in analyzer.attacker_ip_list():
             if not dry_run:

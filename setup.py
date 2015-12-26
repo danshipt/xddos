@@ -1,17 +1,29 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='xddos',
-    version='1.0b5',
-    author='Dmitry Shilyaev',
-    author_email='dima@justhost.ru',
-    license='MIT',
-    url='https://github.com/servancho/xddos',
+        name='xddos',
+        url='https://github.com/servancho/xddos',
+        description='XDDoS - DDoS protection system',
+        keywords='ddos protection nginx web',
+        version='1.1.10',
+        author='Dmitry Shilyaev',
+        author_email='dima@justhost.ru',
+        license='MIT',
+        zip_safe=True,
+        install_requires=['argparse'],
+        packages=find_packages(exclude=['tests']),
+        scripts=['xddos.py'],
 
-    install_requires=['argparse'],
+        include_package_data=True,
+        data_files=[
+            ('/usr/share/xddos',
+             ['deps/tlog.sh',
+              'deps/logrotate.d.xddos', 'deps/cron',
+              'deps/runner.sh', 'deps/enable.sh', 'deps/disable.sh'])],
 
-    packages=find_packages(exclude=['tests.*', 'ddos.egg-info']),
-    scripts=['xddos.py'],
-
-    zip_safe=True
+        entry_points={
+            'console_scripts': [
+                'xddos=xddos:main',
+            ],
+        },
 )

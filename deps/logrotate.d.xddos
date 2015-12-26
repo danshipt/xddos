@@ -1,0 +1,5 @@
+/var/log/xddos.log {
+    missingok
+    postrotate
+    endscript
+}
