@@ -17,8 +17,8 @@ class GenericBlocker:
 
 class IPTablesBlocker(GenericBlocker):
     def __init__(self):
-        self.block_command = ['/usr/sbin/iptables', '-A', 'INPUT', '-s']
-        self.unblock_command = ['/usr/sbin/iptables', '-D', 'INPUT', '-s']
+        self.block_command = ['/sbin/iptables', '-A', 'INPUT', '-s']
+        self.unblock_command = ['/sbin/iptables', '-D', 'INPUT', '-s']
 
     def get_block_command(self, ip):
         assert ip
