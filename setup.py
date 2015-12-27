@@ -5,7 +5,7 @@ setup(
         url='https://github.com/servancho/xddos',
         description='XDDoS - DDoS protection system',
         keywords='ddos protection nginx web',
-        version='1.1.10',
+        version='1.1.13',
         author='Dmitry Shilyaev',
         author_email='dima@justhost.ru',
         license='MIT',
@@ -14,7 +14,6 @@ setup(
         packages=find_packages(exclude=['tests']),
         scripts=['xddos.py'],
 
-        include_package_data=True,
         data_files=[
             ('/usr/share/xddos',
              ['deps/tlog.sh',

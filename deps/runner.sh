@@ -9,4 +9,4 @@ if [ ! -f ${NGINX_LOG} ]; then
     exit 1
 fi
 
-${TLOG} ${NGINX_LOG} nginxlog | xddos -p /var/run/xddos.pid -f nginx -b iptables --stdin >${XDDOS_LOG} 2>&1
+${TLOG} ${NGINX_LOG} nginxlog | xddos -p /var/run/xddos.pid -f nginx -b iptables --stdin >>${XDDOS_LOG} 2>&1

@@ -1,1 +1,1 @@
-*/1 * * * * root /usr/share/runner.sh
+*/1 * * * * root /usr/share/xddos/runner.sh >>/var/log/xddos_auto.log 2>&1
