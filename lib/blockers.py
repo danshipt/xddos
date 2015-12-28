@@ -1,7 +1,9 @@
+from __future__ import unicode_literals
+
 from subprocess import Popen, PIPE
 
 
-class GenericBlocker:
+class GenericBlocker(object):
     def get_block_command(self, ip):
         raise Exception('Not implemented.')
 

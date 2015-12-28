@@ -1,1 +1,1 @@
-*/1 * * * * root /usr/share/xddos/runner.sh >>/var/log/xddos_auto.log 2>&1
+*/1 * * * * root nice -n -5 /usr/share/xddos/runner.sh >>/var/log/xddos_auto.log 2>&1

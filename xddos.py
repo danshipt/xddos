@@ -1,13 +1,15 @@
 #!/usr/bin/env python
-import sys
-import argparse
-import traceback
-import os
+from __future__ import unicode_literals
 
-from lib.data_providers import StdInDataProvider, FileDataProvider
-from lib.nginx_log_parser import NginxLogParser
+import argparse
+import os
+import sys
+import traceback
+
 from lib.analyzers import GenericDDoSAnalyzer
 from lib.blockers import ApfBlocker, IPTablesBlocker
+from lib.data_providers import StdInDataProvider, FileDataProvider
+from lib.nginx_log_parser import NginxLogParser
 
 
 def enter_pid_lock(lock_file):
@@ -16,7 +18,7 @@ def enter_pid_lock(lock_file):
     if os.path.exists(lock_file):
         sys.exit()
 
-    pid = str(os.getpid())
+    pid = unicode(os.getpid())
     file(lock_file, 'w').write(pid)
 
 

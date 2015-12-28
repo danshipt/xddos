@@ -1,7 +1,9 @@
+from __future__ import unicode_literals
+
 import re
 
 
-class AccessLogRecord:
+class AccessLogRecord(object):
     def __init__(self):
         self.date = ''
         self.domain = ''
@@ -10,7 +12,7 @@ class AccessLogRecord:
         self.request_uri = ''
 
 
-class NginxLogParser:
+class NginxLogParser(object):
     pattern = re.compile(r''
                          '(\d+.\d+.\d+.\d+)\s-\s-\s'  # IP address
                          '\[(.+)\]\s'  # datetime

@@ -1,4 +1,7 @@
-class GenericDDoSAnalyzer:
+from __future__ import unicode_literals
+
+
+class GenericDDoSAnalyzer(object):
     def __init__(self, data_provider, threshold=150):
         assert data_provider
 

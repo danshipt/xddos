@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from setuptools import setup, find_packages
 
 setup(
@@ -5,7 +7,7 @@ setup(
         url='https://github.com/servancho/xddos',
         description='XDDoS - DDoS protection system',
         keywords='ddos protection nginx web',
-        version='1.1.14',
+        version='1.1.15',
         author='Dmitry Shilyaev',
         author_email='dima@justhost.ru',
         license='MIT',

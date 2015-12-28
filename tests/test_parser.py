@@ -1,9 +1,11 @@
+from __future__ import unicode_literals
+
 import os
 import unittest
 
-from lib.nginx_log_parser import NginxLogParser
-from lib.data_providers import FileDataProvider
 from lib.analyzers import GenericDDoSAnalyzer
+from lib.data_providers import FileDataProvider
+from lib.nginx_log_parser import NginxLogParser
 
 
 class TestDDoSAnalizer(unittest.TestCase):

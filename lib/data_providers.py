@@ -1,9 +1,10 @@
-# -*- coding: UTF-8 -*-
+from __future__ import unicode_literals
+
 import os
 import sys
 
 
-class StdInDataProvider:
+class StdInDataProvider(object):
     def __iter__(self):
         for line in sys.stdin:
             yield line

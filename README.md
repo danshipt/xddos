@@ -95,3 +95,7 @@ To run the project tests:
 <code>
 $ nosetests -w ./tests/
 </code>
+
+
+
+Copyright (c) 2015 JustHost.ru, Dmitry Shilyaev <dima@justhost.ru>
