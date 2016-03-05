@@ -64,7 +64,7 @@ python get-pip.py
 Installing app using pip
 ```
 pip install pip --upgrade --no-cache-dir
-pip install xddos
+pip install xddos --no-cache-dir
 
 # or upgrade
 # pip install xddos --upgrade --no-cache-dir
