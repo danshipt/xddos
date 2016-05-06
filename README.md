@@ -54,6 +54,25 @@ For example, if there is a more then 35 (default) requests from some IP to, say,
 Installation
 ============
 
+Quick install
+-------------
+
+```
+bash <(curl https://raw.githubusercontent.com/servancho/xddos/master/install.sh)
+
+```
+
+If you want to check the script contents:
+
+```
+wget https://raw.githubusercontent.com/servancho/xddos/master/install.sh
+bash install.sh
+```
+
+
+Manual install
+--------------
+
 Install pip:
 ```
 cd
