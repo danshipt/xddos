@@ -22,15 +22,18 @@ pip install pip --upgrade --no-cache-dir
 pip install xddos --no-cache-dir
 pip install xddos --upgrade --no-cache-dir
 
+echo ""
+echo "==========================================================="
 echo "XDDoS installed"
 
 echo "Edit the parameters of protection:"
-echo "      vi /usr/share/xddos/runner.sh"
+echo "$ vi /usr/share/xddos/runner.sh"
 
 echo "Enable protection:"
-echo "      /usr/share/xddos/enable.sh"
+echo "$ /usr/share/xddos/enable.sh"
 
 echo "Disable protection:"
-echo "      /usr/share/xddos/disable.sh"
+echo "$ /usr/share/xddos/disable.sh"
+echo "==========================================================="
 
 exit 0

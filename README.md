@@ -59,7 +59,6 @@ Quick install
 
 ```
 bash <(curl https://raw.githubusercontent.com/servancho/xddos/master/install.sh)
-
 ```
 
 If you want to check the script contents:
