@@ -102,6 +102,9 @@ cd /usr/share/xddos
 ./disable.sh
 ```
 
+Edit /usr/share/xddos/runner.sh to customize the parameters of the XDDoS protection.
+
+
 Running tests
 =============
 
