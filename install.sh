@@ -20,7 +20,11 @@ rm -f get-pip.py
 echo "Installing XDDoS"
 pip install pip --upgrade --no-cache-dir
 pip install xddos --no-cache-dir
-pip install xddos --upgrade --no-cache-dir
+
+if [ ! -f /usr/share/xddos ]; then
+    cp -r /usr/lib/python2.6/site-packages/usr/share/xddos /usr/share/xddos
+    chmod +x /usr/share/xddos/*.sh
+fi
 
 echo ""
 echo "==========================================================="
