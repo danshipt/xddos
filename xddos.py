@@ -8,7 +8,7 @@ import traceback
 
 from lib.analyzers import GenericDDoSAnalyzer
 from lib.blockers import ApfBlocker, IPTablesBlocker
-from lib.data_providers import StdInDataProvider, FileDataProvider
+from lib.data_providers import FileDataProvider, StdInDataProvider
 from lib.nginx_log_parser import NginxLogParser
 
 
@@ -18,8 +18,9 @@ def enter_pid_lock(lock_file):
     if os.path.exists(lock_file):
         sys.exit()
 
-    pid = unicode(os.getpid())
-    file(lock_file, 'w').write(pid)
+    pid = os.getpid()
+    with open(lock_file, 'w') as lock_file_txt:
+        lock_file_txt.write(unicode(pid).encode('utf8'))
 
 
 def exit_pid_lock(lock_file):
@@ -89,7 +90,7 @@ def main():
 if __name__ == "__main__":
     try:
         main()
-    except Exception, ex:
+    except Exception as ex:
         traceback.print_exc(file=sys.stdout)
         exit(1)
 

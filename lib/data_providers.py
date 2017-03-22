@@ -10,7 +10,7 @@ class StdInDataProvider(object):
             yield line
 
 
-class FileDataProvider:
+class FileDataProvider(object):
     def __init__(self, file_name):
         assert file_name
         assert os.path.exists(file_name)
